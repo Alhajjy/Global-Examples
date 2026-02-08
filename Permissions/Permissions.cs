@@ -37,23 +37,9 @@ class Program
         {
             _Permissions &= ~permissionToRemove;
         }
-        public bool HasPermission1(enPermissions permissionToCheck)
+        public bool HasPermission(enPermissions permissionToCheck)
         {
             return (_Permissions & permissionToCheck) == permissionToCheck;
-        }
-        // actions
-        public string GetAvailableActions()
-        {
-            List<string> actions = new List<string>();
-            if (HasPermission1(enPermissions.AdminsManagment))
-                actions.Add("Manage Admins");
-            if (HasPermission1(enPermissions.UsersManagment))
-                actions.Add("Manage Users");
-            if (HasPermission1(enPermissions.ClientsManagment))
-                actions.Add("Manage Clients");
-            if (HasPermission1(enPermissions.PersonalAccountManagment))
-                actions.Add("Manage Personal Account");
-            return string.Join(", ", actions);
         }
     }
     static void PrintMainScreen()
@@ -77,7 +63,7 @@ class Program
     }
     static void PrintResult(Person person, enPermissions permission)
     {
-        if (person.HasPermission1(permission))
+        if (person.HasPermission(permission))
         {
             Console.WriteLine($"You have permission to {permission}");
         }
