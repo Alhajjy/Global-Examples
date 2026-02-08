@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 class Program
 {
+    [Flags]
     enum enPermissions
     {
         AdminsManagment = 1,
